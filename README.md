@@ -1,42 +1,39 @@
-# mangoshot
+# jackshot
 
-Минималистичный аналог ShareX для Wayland (цель — MangoWM): снимок,
-аннотации, сохранение, буфер обмена, загрузка по ссылке.
+A minimalist ShareX alternative for Wayland (primary target: MangoWM): screenshot capture, annotations, saving, clipboard, and uploading via link.
 
-## Зависимости
-- Qt6 (Widgets), CMake, компилятор C++17
-- Во время работы: `grim`, `slurp`, `wl-clipboard`, `curl`, `libnotify`
+## Dependencies
+- Qt6 (Widgets), CMake, C++17 compiler
+- Runtime: `grim`, `slurp`, `wl-clipboard`, `curl`, `libnotify`
 
-Arch: `sudo pacman -S qt6-base cmake grim slurp wl-clipboard curl libnotify`
+Arch Linux: `sudo pacman -S qt6-base cmake grim slurp wl-clipboard curl libnotify`
 
-## Сборка
-    cmake -B build -DCMAKE_BUILD_TYPE=Release
-    cmake --build build -j
-    sudo cmake --install build
+## Building
+```bash
+cmake -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j
+sudo cmake --install build
+```
 
-## Использование
-    mangoshot        # область -> редактор
-    mangoshot -f     # весь экран -> редактор
-    mangoshot -d     # область -> сразу в файл и буфер
+## Usage
+```bash
+jackshot        # region -> editor
+jackshot -f     # fullscreen -> editor
+jackshot -d     # region -> save and copy immediately
+```
 
-Горячие клавиши в редакторе: A стрелка, R рамка, P кисть, N стикер,
-T текст, Ctrl+Z отмена, Ctrl+S сохранить, Ctrl+C копировать,
-Ctrl+U загрузить, Esc закрыть.
+Editor hotkeys: **A** arrow, **R** rectangle, **P** pen, **N** step sticker, **T** text, **Ctrl+Z** undo, **Ctrl+S** save, **Ctrl+C** copy, **Ctrl+U** upload, **Esc** close.
 
-Файлы: `~/Pictures/Screenshots/`.
-Загрузка: `MANGOSHOT_UPLOAD_URL` (по умолчанию https://0x0.st; ответ —
-текст со ссылкой). Для Imgur/Dropbox нужен API-ключ — добавьте свой
-класс в `Share.h`.
+Files: `~/Pictures/Screenshots/`.  
+Uploads: `JACKSHOT_UPLOAD_URL` (defaults to [https://0x0.st](https://0x0.st); expects a plain text URL response). For Imgur/Dropbox, an API key is required — add your own implementation in `Share.h`.
 
-## Интеграция с MangoWM (проверьте по документации Mango)
-В `~/.config/mango/config.conf` добавьте бинд на Print и правило
-плавающего окна для app_id `mangoshot`. Точный синтаксис `bind` и
-`windowrule` сверьте с https://mangowm.github.io/docs/ — я его не проверял.
+## MangoWM Integration
+In `~/.config/mango/config.conf`, add a keybind for the Print key and a floating window rule for the app_id `jackshot`. Please refer to the [MangoWM documentation](https://mangowm.github.io/docs/) for the exact `bind` and `windowrule` syntax.
 
-## Участие в разработке
-1. Fork, ветка `feature/...`.
-2. Стиль: C++17, 4 пробела, без сырых `new` вне Qt-родителей.
-3. Проверка: сборка без предупреждений + ручной тест (-r, -f, -d).
-4. Pull request с описанием и скриншотом.
+## Contributing
+1. Fork the repository and create a branch: `feature/...`.
+2. Code style: C++17, 4 spaces indent, no raw `new` outside of Qt-parented objects.
+3. Verification: build without warnings + manual testing (`-r`, `-f`, `-d`).
+4. Open a pull request with a description and a screenshot.
 
-Идеи: запись экрана (wf-recorder), размытие/пиксели, OCR, Imgur/S3, трей.
+Roadmap ideas: screen recording (`wf-recorder`), blur/pixelate, OCR, Imgur/S3 integration, system tray.
