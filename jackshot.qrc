@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/jackpot">
+        <file alias="hole.png">assets/hole.png</file>
+    </qresource>
+</RCC>

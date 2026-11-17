@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Jackshot (глобальные клавиши)
+Exec=jackshot --daemon
+Terminal=false
+NoDisplay=true
+X-GNOME-Autostart-enabled=true

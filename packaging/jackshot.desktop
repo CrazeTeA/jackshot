@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Jackshot
+GenericName=Screenshot tool
+Comment=Скриншоты с аннотациями для Wayland
+Exec=jackshot
+Icon=applets-screenshooter
+Terminal=false
+Categories=Utility;Graphics;
+Keywords=screenshot;screen;capture;
